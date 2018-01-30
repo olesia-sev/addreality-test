@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+html(lang="RU-ru")
+  head
+    meta(charset="UTF-8")
+    meta(content="width=device-width, initial-scale=1" name="viewport")
+    meta(content="ie=edge,chrome=1" http-equiv="X-UA-Compatible")
+    block title
+    link(rel="stylesheet", href="assets/styles/app.min.css")
+  body
+    .burger-menu
+      .burger-menu__line-1
+      .burger-menu__line-2
+      .burger-menu__line-3
+    .full-screen-menu
+      .full-screen-menu__wrapper
+        ul.full-screen-menu__list
+          -
+            var menu = [
+              {
+                title: 'Задание 2',
+                href: 'task2.html'
+              },
+              {
+                title: 'Задание 3',
+                href: 'task3.html'
+              },
+              {
+                title: 'Задание 4',
+                href: 'task4.html'
+              },
+              {
+                title: 'Задание 5',
+                href: 'task5.html'
+              },
+            ]
+          for i in menu
+            li.full-screen-menu__item
+              a.menu-link(href= i.href) #{i.title}
+    block content
+    script(
+      src="//code.jquery.com/jquery-3.2.1.min.js",
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=",
+      crossorigin="anonymous"
+    )
+    script(src="assets/scripts/app.js")
+    

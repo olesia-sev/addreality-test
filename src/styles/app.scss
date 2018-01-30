@@ -1,0 +1,295 @@
+// resolutions
+$tablets: 999px;
+
+//colors
+$blue: #132334;
+$lightblue: #598391;
+
+@import 'mixins';
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+//бургер-меню
+.burger-menu {
+  display: block;
+  position: absolute;
+  top: 44px;
+  right: 30px;
+  cursor: pointer;
+  width: 40px;
+  height: 35px;
+  z-index: 17;
+}
+
+.burger-menu__line-1,
+.burger-menu__line-2,
+.burger-menu__line-3 
+{
+  position: absolute;
+  width: 40px;
+  height: 5px;
+  background-color: white;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  box-shadow: 1px 2px 9px 0px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+}
+
+.burger-menu__line-2 {
+  margin-top: 12px;
+}
+
+.burger-menu__line-3 {
+  margin-top: 24px;
+}
+
+.menu-on .burger-menu__line-1 {
+  transform: rotate(45deg);
+  margin-top: 8px;
+  z-index: 17;
+}
+
+.menu-on .burger-menu__line-3 {
+  transform: rotate(-45deg);
+  margin-top: 8px;
+  z-index: 17;
+}
+
+.menu-on .burger-menu__line-2 {
+  transform: scale(0);
+  opacity: 0;
+  z-index: 17;
+}
+
+//Полноэкранное меню
+.full-screen-menu {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -999999px;
+  //display: flex;
+  background-color: $blue;
+  opacity: 0;
+  transition: opacity .5s;
+}
+
+.full-screen-menu__wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.full-screen-menu__active {
+  left: 0;
+  z-index: 15;
+  opacity: .8;
+}
+
+.full-screen-menu__list {
+  list-style: none;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.full-screen-menu__item {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.menu-link {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  text-decoration: none;
+  font-size: 31px;
+  transition: .3s;
+
+  &:hover {
+    color: $lightblue;
+  }
+}
+
+.no-scroll {
+  position: fixed;
+  overflow: hidden;
+}
+
+/*Задание 2*/
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: $lightblue;
+}
+
+.block {
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(#fff, .6);
+  box-shadow: 1px 2px 9px 0px rgba(0, 0, 0, 0.4);
+}
+
+/*Задание 3*/
+.container {
+  width: 100vw;
+  height: 3000px;
+  position: relative;
+  background: linear-gradient(#fff, $lightblue);
+}
+
+.title-wrapper {
+  padding-top: 5%;
+}
+
+.title {
+  text-align: center;
+  color: #1A2F46;
+}
+
+.button-wrapper {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+}
+
+.button {
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  border: none;
+  outline: transparent;
+  cursor: pointer;
+  opacity: 0;
+  transition: .5s;
+
+  &__arrow-up {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.active {
+  opacity: 1;
+}
+
+/*Задание 4*/
+.video-container {
+  width: 100vw;
+  height: 600px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .video {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@supports (object-fit: cover) {
+  .video {
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+  }
+}
+
+.video__title {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 52px;
+  color: #112132;
+  
+  &-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  background-color: rgba($lightblue, .5);
+  padding: 30px 25px;
+  border-radius: 10px;
+  }
+}
+
+/*Задание 5*/
+.wrapper-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  
+  @include tablets {
+    flex-direction: column;
+  }
+}
+
+.flex-block {
+  height: 200px;
+  background-color: #557E8F;
+  border: 1px solid lightblue;
+  flex-grow: 1;
+
+  &:nth-child(2) {
+    @include tablets {
+      display: none;
+    }
+  }
+
+  &:nth-child(3) {
+    @include tablets {
+      order: -1;
+    }
+  }
+}
+
+.inner-text {
+  text-align: center;
+}
